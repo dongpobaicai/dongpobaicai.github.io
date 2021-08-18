@@ -90,11 +90,11 @@ class Snow {
     this.minSpeed = opt.minSpeed || 1;
 
     // 是否左右摇摆
-    this.isSwing = false
+    this.isSwing = false;
     // 左右摇摆的正弦函数x变量
-    this.swingRadian = 0
+    this.swingRadian = 0;
     // 左右摇摆的正弦x步长
-    this.swingStep = 0.01
+    this.swingStep = 0.01;
 
     // 窗口尺寸
     this.windowWidth = opt.windowWidth;
@@ -105,21 +105,21 @@ class Snow {
 
   // 初始化各种属性
   init(reset) {
-    let opacity = Math.random() + 0.4
+    let opacity = Math.random() + 0.4;
 
     this.width = Math.floor(Math.random() * this.maxWidth + this.minWidth);
-    this.opacity = opacity > 1 ? 1 :  opacity;
+    this.opacity = opacity > 1 ? 1 : opacity;
     this.x = Math.floor(Math.random() * (this.windowWidth - this.width));
     this.y = reset ? -this.width : Math.floor(Math.random() * (this.windowHeight - this.width));
     this.sx = Math.random() * this.maxSpeed + this.minSpeed;
-    this.sx = Math.random() > 0.5 ? this.sx : -this.sx
+    this.sx = Math.random() > 0.5 ? this.sx : -this.sx;
     this.sy = Math.random() * this.maxSpeed + this.minSpeed;
 
-    this.isSwing = Math.random() > 0.8
-    this.swingStep = 0.01 * Math.random()
-    this.swingRadian = Math.random() * (1.1 - 0.9) + 0.9// 也让它随机一下
+    this.isSwing = Math.random() > 0.8;
+    this.swingStep = 0.01 * Math.random();
+    this.swingRadian = Math.random() * (1.1 - 0.9) + 0.9; // 也让它随机一下
     if (reset) {
-      this.setStyle()
+      this.setStyle();
     }
   }
 
@@ -150,29 +150,38 @@ class Snow {
   // 一帧动画
   move() {
     if (this.x < -this.width || this.x > this.windowWidth || this.y > this.windowHeight) {
-      this.init(true)
-      return false
+      this.init(true);
+      return false;
     }
     if (this.isSwing) {
       if (this.swingRadian > 1.1 || this.swingRadian < 0.9) {
-        this.swingStep = -this.swingStep
+        this.swingStep = -this.swingStep;
       }
-      this.swingRadian += this.swingStep
-      this.x += this.sx * Math.sin(this.swingRadian * Math.PI)
-      this.y -= this.sy * Math.cos(this.swingRadian * Math.PI)// 因为速度都是负的，所以改成-
+      this.swingRadian += this.swingStep;
+      this.x += this.sx * Math.sin(this.swingRadian * Math.PI);
+      this.y -= this.sy * Math.cos(this.swingRadian * Math.PI); // 因为速度都是负的，所以改成-
     } else {
-      this.x += this.sx
-      this.y += this.sy
+      this.x += this.sx;
+      this.y += this.sy;
     }
-    this.el.style.transform = `translate(${this.x}px, ${this.y}px)`
+    this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
   }
 }
 
 export default Snow;
-
 ```
 
 3. 几个关键点
 
-+ window.requestAnimationFrame，告诉浏览器下一次重绘前执行回调函数
-+ 雪花运动通过transform来完成
+- window.requestAnimationFrame，告诉浏览器下一次重绘前执行回调函数
+- 雪花运动通过 transform 来完成
+
+## 弹幕组件
+
+参考资料：[微信小程序弹幕组件](https://github.com/wechat-miniprogram/miniprogram-barrage)
+
+## 滚动数字
+
+<scroll-num />
+
+> 数字变动特效效果，上下翻转效果

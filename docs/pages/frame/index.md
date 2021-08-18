@@ -761,3 +761,11 @@ function currying(fn, length) {
   - promise.any  只要有一个成功就返回，否则返回失败
   - WeakRefs 对对象的弱引用
   
+## vue 和 react 对比
+
+1. 组件懒加载，都是使用了webpack2中`import('')`代码分割
+   1. vue  `component: () => import('')`
+   2. react  `react.lazy(() => import(''))`
+
+
+   

@@ -5,7 +5,7 @@ module.exports = {
   head: [
     [
       "link",
-      { rel: "icon", href: "/logo.png" }, //浏览器的标签栏的网页图标,基地址/docs/.vuepress/public
+      { rel: "icon", href: "/logo.ico" }, //浏览器的标签栏的网页图标,基地址/docs/.vuepress/public
     ],
   ],
   markdown: {
