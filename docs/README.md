@@ -10,5 +10,7 @@ features:
   details: qiankun带你领略微前端魅力
 - title: 移动端
   details: uniapp | 微信小程序
-footer: MIT Licensed | Copyright © 2021 Tsanfer
+- title: 浏览器
+  details: 由浅入深理解浏览器和网络协议
+footer: MIT Licensed | Copyright © 2022 Tsanfer
 ---

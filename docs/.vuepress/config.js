@@ -19,6 +19,7 @@ module.exports = {
       { text: "组件库", link: "/pages/comlibrary/index.md" },
       { text: "前端框架", link: "/pages/frame/index.md" },
       { text: "项目说明", link: "/pages/project/index.md" },
+      { text: "浏览器", link: "/pages/browser/index.md" },
     ],
     repo: "dongpobaicai/vuepress-githubpages",
     repoLabel: "Github",
