@@ -68,12 +68,9 @@ const qianKunStart = (list) => {
 
   // 注册子应用
   registerMicroApps(apps, {
-    beforeLoad: (app) =>
-      console.log("[LifeCycle] before load %c%s", "color: green;", app.name),
-    beforeMount: (app) =>
-      console.log("[LifeCycle] before mount %c%s", "color: green;", app.name),
-    afterUnmount: (app) =>
-      console.log("[LifeCycle] after unmount %c%s", "color: green;", app.name),
+    beforeLoad: (app) => console.log("[LifeCycle] before load %c%s", "color: green;", app.name),
+    beforeMount: (app) => console.log("[LifeCycle] before mount %c%s", "color: green;", app.name),
+    afterUnmount: (app) => console.log("[LifeCycle] after unmount %c%s", "color: green;", app.name),
   });
 
   // 启动微前端
@@ -203,6 +200,119 @@ __qiankun__ || render();
 - 通过类方法形式创建请求实例
 - 通过配置方式，设置请求拦截，响应拦截
 
+## vue-json-schema-form 架构
+
+- `yarn workspace` 目录管理
+- `lerna` 打包发布
+
+### 目录结构
+
+```
+- packages
+  - demo   // 表单渲染的应用 编辑器、预览器、活动编辑器
+  - docs
+  - lib   // 框架核心包  封装过后的表单
+```
+
+### lib/vue2/vue2-form-element element ui 的表单
+
+- `package.json` 通过 rollup 打包 => esm，umd 供外界使用
+
+```js
+[
+  {
+    format: "esm",
+    file: "",
+    name: "",
+    sourcemap,
+  },
+  {
+    format: "umd",
+    file: "",
+    name: "",
+    sourcemap,
+  },
+];
+```
+
+- `createVue2Core(globalOptions)` 工厂模式，创建 form 表单实例
+- `globalOptions` 结构
+
+```js
+{
+  // 基础类型
+  types: {
+      boolean: 'el-switch',
+      string: 'el-input',
+      number: 'el-input-number',
+      integer: 'el-input-number',
+  },
+  // 数据处理类
+  formats: {
+      color: 'el-color-picker',
+      time: TimePickerWidget, // 20:20:39+00:00
+      date: DatePickerWidget, // 2018-11-13
+      'date-time': DateTimePickerWidget, // 2018-11-13T20:20:39+00:00
+  },
+  common: {
+      select: SelectWidget,
+      radioGroup: RadioWidget,
+      checkboxGroup: CheckboxesWidget,
+  },
+  widgetComponents
+}
+```
+
+- `@lljj/vue2-form-core` => `createVue2Core` 具体实现
+
+```js
+/**
+ * 返回一个vue组件
+ **/
+function createVue2Core() {
+  return {
+    name: "vueForm",
+    props: {
+      globalOptions: {
+        type: Object,
+        default: () => {},
+      },
+    },
+    data() {
+      return {};
+    },
+    render() {},
+  };
+}
+```
+
+1. 注册`globalOptions.WIDGET_MAP.widgetComponents` => 自定义组件 widget (最小渲染元素)
+2. `render` => 本质通过 h 函数，渲染 globalOptions 中提供 form 表单
+3. 关于表单`formData`的处理
+
+```js
+var formData = getDefaultFormState(schema, value); // formData 受 schema + value  影响
+// 看下这个getDefaultFormState具体实现
+function getDefaultFormState() {
+  // 处理allof $ref 合并相关数据
+  // 获取default值，和传入formData进行合并
+}
+```
+4. 渲染子元素 `[h(SchemaField, { props }), defaultSlot]`
+5. `SchemaField` 的实现
+  - 查询`ui:field`是否存在，存在渲染自定义组件
+  - 查询当前配置type，渲染不同内置组件
+    - 基本数据类型   => formItem => 通过type + 结合 globalOptions.
+    ```js
+    <FormItem>
+      h(globalOptions.WIDGET_MAP.types[item.type])
+    </FormItem>
+    ```
+    - Object类型处理   遍历排过序的 propertiesVNodeList => SchemaField => Widget
+    - Anyof 单选逻辑   
+    - Oneof 下拉选择，单选
+     
+
 ## 设计模式
 
 > 提高代码可重复行，健壮性
@@ -214,61 +324,61 @@ __qiankun__ || render();
 
   ```js
   function getSingle(fn) {
-    let instance = null
-  
-    return function() {
-      if (!instance) {
-        instance = fn.apply(this, arguments)
-      }
-  
-      return instance
-    }
-  }
-  
-  function teacher(name) {
-    this.name = name 
-  }
-  
-  teacher.prototype.getName = function() {
-    console.log(this.name)
-  }
-  
-  const createTeacher = getSingle(function(name) {
-      const instance = new teacher(name)
+    let instance = null;
 
-      return instance
-  })
-  
-  createTeacher('吴老师').getName()
-  createTeacher('大大老师').getName()
+    return function () {
+      if (!instance) {
+        instance = fn.apply(this, arguments);
+      }
+
+      return instance;
+    };
+  }
+
+  function teacher(name) {
+    this.name = name;
+  }
+
+  teacher.prototype.getName = function () {
+    console.log(this.name);
+  };
+
+  const createTeacher = getSingle(function (name) {
+    const instance = new teacher(name);
+
+    return instance;
+  });
+
+  createTeacher("吴老师").getName();
+  createTeacher("大大老师").getName();
   ```
 
 ### 工厂模式
 
-- 创建对象，通过create函数来完成，不通过new方式，不暴露实例类
+- 创建对象，通过 create 函数来完成，不通过 new 方式，不暴露实例类
 
   ```js
   class Dog {
     constructor(name) {
-      this.name = name
+      this.name = name;
     }
     getName() {
-      console.log(this.name)
+      console.log(this.name);
     }
   }
-    
+
   class Factory {
     create(name) {
-      return new Dog(name)
+      return new Dog(name);
     }
-  } 
+  }
 
-  const factory = new Factory()
-  const dog1 = factory.create('狼狗')
-  const dog2 = factory.create('柯基')
+  const factory = new Factory();
+  const dog1 = factory.create("狼狗");
+  const dog2 = factory.create("柯基");
 
-  dog1.getName()
-  dog2.getName()
+  dog1.getName();
+  dog2.getName();
   ```
 
 ### 代理模式
@@ -279,7 +389,7 @@ __qiankun__ || render();
 
 ### 订阅发布模式
 
-- vue的数据监测和更新
+- vue 的数据监测和更新
 
 ### 装饰器模式
 
@@ -429,15 +539,15 @@ b.x;
 var num = 1;
 var myObject = {
   num: 2,
-  add: function() {
+  add: function () {
     this.num = 3;
-    (function() {
+    (function () {
       console.log(this.num);
       this.num = 4;
     })();
     console.log(this.num);
   },
-  sub: function() {
+  sub: function () {
     console.log(this.num);
   },
 };
@@ -450,7 +560,7 @@ sub();
 
 ```js
 var obj = {
-  say: (function() {
+  say: (function () {
     function _say() {
       console.log(this);
     }
@@ -466,7 +576,7 @@ obj.say();
 已知如下数组，编写一个程序将数组扁平化去并除其中重复部分数据，最终得到一个升序且不重复的数组
 
 ```js
-var arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10];
+var arr = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
 
-Array.from(new Set(arr.flat(Infinity))).sort((a, b) => a - b)
+Array.from(new Set(arr.flat(Infinity))).sort((a, b) => a - b);
 ```
