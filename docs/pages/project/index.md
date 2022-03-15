@@ -298,20 +298,44 @@ function getDefaultFormState() {
   // 获取default值，和传入formData进行合并
 }
 ```
+
 4. 渲染子元素 `[h(SchemaField, { props }), defaultSlot]`
 5. `SchemaField` 的实现
-  - 查询`ui:field`是否存在，存在渲染自定义组件
-  - 查询当前配置type，渲染不同内置组件
-    - 基本数据类型   => formItem => 通过type + 结合 globalOptions.
-    ```js
-    <FormItem>
-      h(globalOptions.WIDGET_MAP.types[item.type])
-    </FormItem>
-    ```
-    - Object类型处理   遍历排过序的 propertiesVNodeList => SchemaField => Widget
-    - Anyof 单选逻辑   
-    - Oneof 下拉选择，单选
-     
+
+- 查询`ui:field`是否存在，存在渲染自定义组件
+- 查询当前配置 type，渲染不同内置组件
+  - 基本数据类型 => formItem => 通过 type + 结合 globalOptions.
+  ```js
+  <FormItem>h(globalOptions.WIDGET_MAP.types[item.type])</FormItem>
+  ```
+  - Object 类型处理 遍历排过序的 propertiesVNodeList => SchemaField => Widget
+  - Anyof 单选逻辑
+  - Oneof 下拉选择，单选
+
+## imove 框架 请销假流程应用
+
+### 添加节点
+
+- 借助`antv x6`绘制节点
+- 节点归类 _开始节点_ _行为节点_ _分支节点_
+- 边
+- 支持拖拽添加节点
+- 键盘事件监听
+- 节点样式设置
+- 导出 DLS js 代码 ping
+
+### 运行节点逻辑
+
+- 启动类 logic
+
+  - invoke 的实现
+  - 自动流转下一个节点
+
+- 流程上下文 context
+  - 全局 context，方便存储数据
+  - 当前节点数据
+  - 启动传入的参数
+  - 上一个节点数据
 
 ## 设计模式
 
