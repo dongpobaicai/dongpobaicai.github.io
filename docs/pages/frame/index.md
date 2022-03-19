@@ -277,7 +277,7 @@ FunctionExectionContext = {
 
 - 遵守先进后出原则
 
-![执行栈流程](./run_stack.jpg)
+![执行栈流程](/run_stack.jpg)
 
 ### 垃圾回收算法
 
