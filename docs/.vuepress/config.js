@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/dongpobaicai.github.io/", // 目录根地址，应与Github仓库名字相同
+  base: "./", // 目录根地址
   title: "东坡白菜技术分享",
   description: "让你快速熟悉项目内容",
   head: [
