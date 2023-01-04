@@ -12,5 +12,7 @@ features:
   details: uniapp | 微信小程序
 - title: 浏览器
   details: 由浅入深理解浏览器和网络协议
+- title: 杂谈
+  details: 年终总结，人生感悟，日常趣事
 footer: MIT Licensed | Copyright © 2022 Tsanfer
 ---

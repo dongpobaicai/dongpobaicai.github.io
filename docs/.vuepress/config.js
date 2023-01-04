@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/vuepress-githubpages/", // 目录根地址，应与Github仓库名字相同
+  base: "/dongpobaicai.github.io/", // 目录根地址，应与Github仓库名字相同
   title: "东坡白菜技术分享",
   description: "让你快速熟悉项目内容",
   head: [
@@ -20,8 +20,9 @@ module.exports = {
       { text: "前端框架", link: "/pages/frame/index.md" },
       { text: "项目说明", link: "/pages/project/index.md" },
       { text: "浏览器", link: "/pages/browser/index.md" },
+      { text: "杂谈", link: "/pages/remark/index.md" },
     ],
-    repo: "dongpobaicai/vuepress-githubpages",
+    repo: "dongpobaicai/dongpobaicai.github.io",
     repoLabel: "Github",
     smoothScroll: true,
     lastUpdated: '最后更新'
