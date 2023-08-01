@@ -24,3 +24,5 @@
 3. 登录travis，创建token环境变量
 4. 项目根目录下创建.travis.yml文件
 5. 修改代码，push上去travis自动更新网站
+
+## vuepress-deploy
