@@ -57,12 +57,76 @@ title: 杂谈
 ### 书籍，视频
 
 1. vue2 深入浅出 【完结】
-2. webpack 课程 【完结】
-3. node.js 学习 【进行中】
+2. 玩转 webpack 【完结】
+3. node.js 开发实战 【进行中】
 
 ## 2023 年任务安排
 
-### 1月
+### 1 月
 
-- 【组件库】`dplusui`更新   增加数据监测模型，更细粒度更新组件
+- 【组件库】`dplusui`更新 增加数据监测模型，更细粒度更新组件
 - 【语言】根据课程资料，复习下`typescript vue react node`
+  - react 2.3
+
+### 2 月
+
+- 【开源仓库】`ChatGPT` 学习
+
+### 研究方向
+
+1. 3d 方向：http://mars3d.cn/
+2. 微前端：qiankun
+3. bff（前端的后端）：https://github.com/eshengsky/node-bff
+4. ai 识别：https://google.github.io/mediapipe/
+
+### 3 月
+
+- 3d 框架 【babaylon.js】
+- 游戏框架 【unity3d - webgl】运用
+
+### 4 月
+
+- 辅助线
+- 自定义组件开发
+
+### 5 月
+
+- 大厂 h5
+- canvas 制作酷炫的网页背景特效
+- 前端性能优化原理与实践
+
+  - vue add dll 添加 vue-cli-plugin-dll 插件
+  - 缓存概念
+  - 强缓存 expires => cache-control: max-age=1321321 s-maxage=132121 => cache-control: no-cache 直接走协商缓存，不使用客户端缓存
+    => cache-control: no-store 不使用缓存，直接请求服务器
+  - 协商缓存 If-Modified-Since => Last-Modified 更加可靠 If-None-Match => Etag
+  - 本地缓存 Cookie
+  - 渲染篇
+    - 服务端渲染
+    - 客户端渲染过程 DomTree CssTree 渲染树 布局渲染树 绘制渲染树
+
+- 第三方组件平台
+  - 本地一键安装
+
+### 6 月
+
+- 金华消防大管家开发
+- 视频天枢平台
+- 4.0 迭代需求开发
+
+### 7 月
+
+- 应届生培训计划
+- 慕课网 webgl 学习
+- 可视化入门：从 0 到 1 开发一个图表库
+
+### 8 月
+
+- 应届生培训计划
+- 慕课网 webgl 学习
+- 可视化入门：从 0 到 1 开发一个图表库
+
+### 9 月
+
+-  学习
+- English 学习
