@@ -17,7 +17,7 @@
 └── .travis.yml //Travis CI 自动部署文件
 ```
 
-### travis CI 自动部署文件
+### travis CI 自动部署文件  (因为收费，已废弃)
 
 1. 创建master分支提交源代码，gh-pages分支放置网站静态资源
 2. github生成token
