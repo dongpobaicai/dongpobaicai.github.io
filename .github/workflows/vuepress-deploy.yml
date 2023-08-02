@@ -10,7 +10,7 @@ jobs:
     - name: vuepress-deploy
       uses: jenkey2011/vuepress-deploy@master
       env:
-        ACCESS_TOKEN: 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
+        ACCESS_TOKEN: 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
         TARGET_REPO: dongpobaicai/dongpobaicai.github.io
         TARGET_BRANCH: gh-pages
         BUILD_SCRIPT: yarn && yarn docs:build
