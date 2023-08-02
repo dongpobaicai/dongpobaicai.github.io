@@ -1,5 +1,5 @@
 module.exports = {
-  base: "./", // 目录根地址
+  base: "/", // 目录根地址
   title: "东坡白菜技术分享",
   description: "让你快速熟悉项目内容",
   head: [
