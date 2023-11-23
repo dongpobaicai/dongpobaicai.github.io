@@ -128,5 +128,14 @@ title: 杂谈
 
 ### 9 月
 
--  学习
+- 学习
 - English 学习
+
+### 10 月
+
+- 一表通 1.0 easy-forms-project
+
+### 11 月
+
+- 一表通 2.0 jnpf-web-vue3
+- openAI 的项目实战   开源项目：chatGPTWeb
