@@ -138,4 +138,16 @@ title: 杂谈
 ### 11 月
 
 - 一表通 2.0 jnpf-web-vue3
-- openAI 的项目实战   开源项目：chatGPTWeb
+- openAI 的项目实战 开源项目：chatGPTWeb
+
+### 12 月
+
+- edu-hub 文档补充
+  - 大文件上传
+  - less 使用技巧  https://zhuanlan.zhihu.com/p/603009769
+
+## 2024 年任务安排
+
+### 1 月
+
+- webVR 学习 https://photo-sphere-viewer.js.org/guide/
