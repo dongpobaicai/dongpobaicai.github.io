@@ -143,11 +143,19 @@ title: 杂谈
 ### 12 月
 
 - edu-hub 文档补充
+
   - 大文件上传
-  - less 使用技巧  https://zhuanlan.zhihu.com/p/603009769
+  - less 使用技巧 https://zhuanlan.zhihu.com/p/603009769
 
 ## 2024 年任务安排
+
+> 2023 成为过去，2024 继续加油
+> vue3 相关生态库源码分析，ai 相关技术学习
 
 ### 1 月
 
 - webVR 学习 https://photo-sphere-viewer.js.org/guide/
+- [unplugin-vue-components](!https://github.com/unplugin/unplugin-vue-components) 按需导入原理了解
+- vueuse 的使用
+  - useVirtualList 虚拟列表实现原理
+  - useElementSize 实时获取元素实际大小
